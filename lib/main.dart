@@ -3,18 +3,16 @@ import 'package:payment_app/core/helper_function/ongenerate_route.dart';
 import 'package:payment_app/features/checkout/presenation/views/cart_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const PaymentApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PaymentApp extends StatelessWidget {
+  const PaymentApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        title: 'Flutter Demo',
-        onGenerateRoute: onGenerateRoute,
-        initialRoute: CartView.routeName);
+        onGenerateRoute: onGenerateRoute, initialRoute: CartView.routeName);
   }
 }
