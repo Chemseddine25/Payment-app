@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/app_image.dart';
 import 'package:payment_app/core/utils/text_style.dart';
 import 'package:payment_app/features/checkout/presenation/views/payment_details_view.dart';
-import 'package:payment_app/features/checkout/presenation/views/widgets/custom_button.dart';
+import 'package:payment_app/core/widgets/custom_button.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -16,11 +16,13 @@ class CartViewBody extends StatelessWidget {
           const SizedBox(
             height: 26,
           ),
-          AspectRatio(
-            aspectRatio: 424 / 277,
-            child: Image.asset(
-              Assets.assetsImagesCart,
-              fit: BoxFit.contain,
+          Expanded(
+            child: AspectRatio(
+              aspectRatio: 424 / 277,
+              child: Image.asset(
+                Assets.assetsImagesCart,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           const SizedBox(
@@ -54,6 +56,9 @@ class CartViewBody extends StatelessWidget {
               Navigator.pushReplacementNamed(
                   context, PaymentDetailsView.routeName);
             },
+          ),
+          const SizedBox(
+            height: 12,
           ),
         ],
       ),
