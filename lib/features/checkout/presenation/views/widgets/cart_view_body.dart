@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/app_image.dart';
 import 'package:payment_app/core/utils/text_style.dart';
-import 'package:payment_app/features/checkout/presenation/views/payment_details_view.dart';
 import 'package:payment_app/core/widgets/custom_button.dart';
+import 'package:payment_app/features/checkout/presenation/views/widgets/payment_method_list_item.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -53,8 +53,18 @@ class CartViewBody extends StatelessWidget {
           ),
           CustonButton(
             onTap: () {
-              Navigator.pushReplacementNamed(
-                  context, PaymentDetailsView.routeName);
+              showModalBottomSheet(
+                context: context,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                builder: (context) {
+                  return const PaymentMethodsBottomSheet();
+                },
+              );
             },
           ),
           const SizedBox(
@@ -131,5 +141,23 @@ class TotalPrice extends StatelessWidget {
         style: TextStyles.semiBold24,
       ),
     ]);
+  }
+}
+
+class PaymentMethodsBottomSheet extends StatelessWidget {
+  const PaymentMethodsBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(children: [
+        const PaymentMethodListItem(),
+        const SizedBox(height: 32),
+        CustonButton(
+          onTap: () {},
+        ),
+      ]),
+    );
   }
 }
