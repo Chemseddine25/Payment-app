@@ -25,11 +25,5 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
   }
 }
-      
-  
-      
-    // You can add more routes here in the future
-    
- 
-    
- 
+
+// You can add more routes here in the future
