@@ -1,13 +1,13 @@
 class Metadata {
   Metadata();
 
+  // قم بتغيير الـ factory ليعود بكائن فارغ
   factory Metadata.fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
-    throw UnimplementedError('Metadata.fromJson($json) is not implemented');
+    return Metadata();
   }
 
+  // قم بتغيير الـ toJson لتعود بـ Map فارغة
   Map<String, dynamic> toJson() {
-    // TODO: implement toJson
-    throw UnimplementedError();
+    return {};
   }
 }
