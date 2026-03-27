@@ -32,6 +32,7 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
               padding: const EdgeInsets.only(
                   bottom: 12, left: 16, right: 16, top: 35),
               child: CustonButton(
+                title: 'Pay Now',
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
