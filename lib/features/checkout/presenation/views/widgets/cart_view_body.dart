@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:payment_app/core/services/git_it_service.dart';
 import 'package:payment_app/core/utils/app_image.dart';
 import 'package:payment_app/core/utils/text_style.dart';
 import 'package:payment_app/core/widgets/custom_button.dart';
-import 'package:payment_app/features/checkout/presenation/views/widgets/payment_method_list_item.dart';
+import 'package:payment_app/features/checkout/data/repos/checkout_impl_repo.dart';
+import 'package:payment_app/features/checkout/domain/repos/checkout_repo.dart';
+import 'package:payment_app/features/checkout/presenation/manger/cubit/payment_cubit.dart';
+import 'package:payment_app/features/checkout/presenation/views/widgets/payment_button_sheet.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -52,6 +57,7 @@ class CartViewBody extends StatelessWidget {
             height: 16,
           ),
           CustonButton(
+            title: "complete payment",
             onTap: () {
               showModalBottomSheet(
                 context: context,
@@ -62,7 +68,12 @@ class CartViewBody extends StatelessWidget {
                   ),
                 ),
                 builder: (context) {
-                  return const PaymentMethodsBottomSheet();
+                  return BlocProvider(
+                    create: (context) => PaymentCubit(
+                      getIt<CheckoutRepo>(),
+                    ),
+                    child: const PaymentMethodsBottomSheet(),
+                  );
                 },
               );
             },
@@ -141,23 +152,5 @@ class TotalPrice extends StatelessWidget {
         style: TextStyles.semiBold24,
       ),
     ]);
-  }
-}
-
-class PaymentMethodsBottomSheet extends StatelessWidget {
-  const PaymentMethodsBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(children: [
-        const PaymentMethodListItem(),
-        const SizedBox(height: 32),
-        CustonButton(
-          onTap: () {},
-        ),
-      ]),
-    );
   }
 }
