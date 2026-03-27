@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/text_style.dart';
 
 class CustonButton extends StatelessWidget {
-  const CustonButton({super.key, required this.onTap});
+  const CustonButton({super.key, required this.onTap, required this.title});
   final VoidCallback onTap;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class CustonButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
           ),
         ),
-        child: const Center(
+        child: Center(
             child: Text(
-          'Complete Payment',
+          title,
           textAlign: TextAlign.center,
           style: TextStyles.medium22,
         )),
